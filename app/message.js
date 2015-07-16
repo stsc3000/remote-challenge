@@ -12,7 +12,8 @@ var Message = function(messageData) {
   _.extend(this, messageData);
   _.extend(this, {
     date: this.getDate(),
-    dateString: this.getDateString()
+    dateString: this.getDateString(),
+    time: this.getTime()
   });
 };
 
@@ -23,6 +24,10 @@ _.extend(Message.prototype, {
   getDateString: function() {
     var date = this.getDate();
     return [date.getFullYear(), pad(date.getMonth() + 1), pad(date.getDate())].join('-');
+  },
+  getTime: function() {
+    var date = this.getDate();
+    return [pad(date.getHours()), pad(date.getMinutes())].join(':');
   }
 });
 

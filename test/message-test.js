@@ -25,4 +25,8 @@ describe('Message', function() {
     expect(message.date.getTime()).toEqual(messageData.dateReceived * 1000);
   });
 
+  it('sets a time', function() {
+    expect(message.getTime()).toEqual('10:00');
+  });
+
 });
