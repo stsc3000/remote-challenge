@@ -33,7 +33,12 @@ _.extend(MessageRepository.prototype, {
         orderMessagesByDate(this.messages)
       , options)
     );
+  },
+
+  getMessageById: function(messageId) {
+    return _.find(this.messages, {_id: messageId});
   }
+
 });
 
 module.exports = MessageRepository;

@@ -47,4 +47,9 @@ describe('MessageRepository', function() {
     expect(firstOfJulyGroup.messages.length).toEqual(2);
     expect(lastOfJuneGroup).toBeUndefined();
   });
+
+  it('gets a message by id', function() {
+    var message = messageRepository.getMessageById('558070eecadb84b2cd4d5ee2');
+    expect(message.subject).toEqual('Subject 1');
+  });
 });
