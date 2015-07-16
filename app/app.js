@@ -1,4 +1,5 @@
 var MessagesListView = require('./messages-list-view');
+var MessagesDetailView = require('./messages-detail-view');
 var MessageRepository = require('./message-repository');
 var messageData = require("json!./emails.json")
 var $ = require('jquery');
@@ -21,12 +22,26 @@ _.extend(App.prototype, {
     return this.messagesListView;
   },
 
+  getMessagesDetailView: function() {
+    if (!this.messagesDetailView) {
+      this.messagesDetailView = new MessagesDetailView(
+        this.$el.find('#messages-detail'),
+        this
+      );
+    }
+    return this.messagesDetailView;
+  },
+
+
   start: function() {
     this.getMessagesListView().render();
+    this.getMessagesDetailView().render();
   },
 
   showMessage: function(event, messageId) {
-    console.log(messageId);
+    var message = this.messageRepository.getMessageById(messageId);
+    this.getMessagesDetailView().showMessage(message);
+
   }
 
 });
