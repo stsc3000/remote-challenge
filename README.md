@@ -7,6 +7,8 @@ Using a SPA framework would not have been much of a challenge, given the task. M
 
 ## Installing
 
+Prerequisites: You will need node and npm installed.
+
 First, clone the repository:
 ```bash
 git clone git@github.com:stsc3000/remote-challenge.git
