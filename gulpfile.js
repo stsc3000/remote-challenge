@@ -8,7 +8,7 @@ var webpackStream = require('webpack-stream');
 
 gulp.task("default", ["build-dev", "serve"]);
 
-gulp.task("build-dev", ["webpack:build-dev", "static"], function() {
+gulp.task("build-dev", ["webpack:build-dev", "static", "jasmine"], function() {
   gulp.watch(["app/**/*"], function() {
     gulp.run(['jasmine']);
     gulp.run(['static']);

@@ -126,7 +126,7 @@ body {
 }
 
 #messages-detail-content {
-  width: 500px;
+  max-width: 500px;
   margin: 20px auto;
   font-size: 1.2em;
   font-family: 'Open Sans', sans-serif;
@@ -181,4 +181,24 @@ input {
     position: relative;
     top: -1px;
     *overflow: hidden;
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes fade-in {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+@keyframes fade-in {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.fade-in {
+    -webkit-animation-name: fade-in;
+    animation-name: fade-in;
 }

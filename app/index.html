@@ -20,7 +20,7 @@
         <a href='#' data-filter='new' class='message-filter {{#unless showRead}} active {{/unless}}'>New</a>
         <a href='#' data-filter='all' class='message-filter {{#if showRead}} active {{/if}}'>All</a>
       </div>
-      <ul id='message-groups'>
+      <ul id='message-groups' class='animated>
         {{#each messageGroups}}
           <li class='message-group'>
             <div class='message-group-header light'>
@@ -49,12 +49,14 @@
             Please select a message.
           </div>
         {{ else }}
-          <div id='messages-detail-header'>
-            <h1>{{ message.subject }}</h1>
-            <span class='light'>from </span>{{message.fromName}}
-            <span class='light'>- {{message.dateString}} ({{message.time}}) </span>
+          <div class='animated fade-in'>
+            <div id='messages-detail-header'>
+              <h1>{{ message.subject }}</h1>
+              <span class='light'>from </span>{{message.fromName}}
+              <span class='light'>- {{message.dateString}} ({{message.time}}) </span>
+            </div>
+            <p id='messages-detail-content'>{{message.content}}</p>
           </div>
-          <p id='messages-detail-content'>{{message.content}}</p>
         {{/unless}}
       </div>
     </script>
