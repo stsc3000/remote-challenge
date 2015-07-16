@@ -1,7 +1,8 @@
 module.exports = {
   listView: "" +
       "<script id='messages-list-template' type='x-tmpl-handlebars'>" +
-      "<input type='checkbox' data-rel='messages-filters-show-read'></input>" +
+      "<a href='#' data-filter='new' class='message-filter {{#unless showRead}} active {{/unless}}'>New</a>" +
+      "<a href='#' data-filter='all' class='message-filter {{#if showRead}} active {{/if}}'>All</a>" +
       "<ul>" +
         "{{#each messageGroups}}" +
           "<li data-rel={{dateString}}>" +

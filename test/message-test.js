@@ -18,7 +18,7 @@ describe('Message', function() {
   });
 
   it('sets a dateString', function() {
-    expect(message.dateString).toEqual('2015-07-01');
+    expect(message.dateString).toEqual('01-07-2015');
   });
 
   it('sets a date', function() {

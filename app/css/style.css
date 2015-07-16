@@ -1,6 +1,12 @@
 body {
   font-family: 'Roboto', sans-serif;
-  font-size: 0.9em;
+  font-size: 0.8em;
+  color: #333;
+}
+
+.third {
+  width: 33.33%;
+  float: left;
 }
 
 .half {
@@ -8,16 +14,42 @@ body {
   float: left;
 }
 
+.sixth {
+  width: 16.66%;
+  float: left;
+}
+
+.light {
+  color: #8b8b8b;
+}
+
 .text-right {
   text-align: right;
 }
 
 #messages-filters {
-  padding: 10px 0;
+  padding: 10px;
+  padding-bottom: 0px;
+  border-bottom: 1px solid #efefef;
 }
 
+#messages-filters a {
+  float: right;
+  margin-right: 10px;
+  padding-bottom: 10px;
+  width: 50px;
+  text-align: center;
+}
+
+#messages-filters a.active {
+  color: #333;
+  border-bottom: 1px solid #333;
+}
+
+
+
 #messages-list {
-  width: 300px;
+  width: 400px;
 }
 
 #message-groups {
@@ -25,14 +57,24 @@ body {
   list-style: none;
   padding: 0;
   margin: 0;
-  width: 300px;
+  width: 400px;
   position: fixed;
   overflow: auto;
   height: 100%;
 }
 
+.message-group:first-child h2 {
+  margin-top: 10px;
+}
+
 .message-group-header {
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #efefef;
+  padding: 10px;
+  font-size: 1.8em;
+}
+
+.message-group-header h2{
+  margin-bottom: 10px;
 }
 
 .message-group-list {
@@ -41,8 +83,7 @@ body {
 }
 
 .message-group-list-item {
-  border-bottom: 1px solid #333;
-  padding: 10px 0;
+  padding: 10px;
   cursor: pointer;
 }
 
@@ -69,12 +110,25 @@ body {
 }
 
 #messages-detail-header {
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #efefef;
+  padding-bottom: 10px;
 }
 
-#messages-detail-header ul {
-  list-style: none;
-  padding: 0;
+#messages-detail-header h1 {
+  margin-top: 0;
+}
+
+#messages-detail-empty {
+  text-align: center;
+  padding-top: 200px;
+}
+
+#messages-detail-content {
+  width: 500px;
+  margin: 20px auto;
+  font-size: 1.2em;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.8;
 }
 
 #email-app {
@@ -90,4 +144,39 @@ body {
 
 #email-app .row {
   display: table-row;
+}
+
+a, a:active, a:hover {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    *zoom: 1;
+}
+
+label {
+    display: block;
+    padding-left: 15px;
+    text-indent: -15px;
+}
+input {
+    width: 13px;
+    height: 13px;
+    padding: 0;
+    margin:0;
+    vertical-align: bottom;
+    position: relative;
+    top: -1px;
+    *overflow: hidden;
 }

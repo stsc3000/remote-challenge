@@ -13,7 +13,8 @@ var Message = function(messageData) {
   _.extend(this, {
     date: this.getDate(),
     dateString: this.getDateString(),
-    time: this.getTime()
+    time: this.getTime(),
+    abbreviatedSubject: this.getAbbreviatedSubject()
   });
 };
 
@@ -23,11 +24,19 @@ _.extend(Message.prototype, {
   },
   getDateString: function() {
     var date = this.getDate();
-    return [date.getFullYear(), pad(date.getMonth() + 1), pad(date.getDate())].join('-');
+    return [pad(date.getDate()), pad(date.getMonth() + 1), date.getFullYear()].join('-');
   },
   getTime: function() {
     var date = this.getDate();
     return [pad(date.getHours()), pad(date.getMinutes())].join(':');
+  },
+  getAbbreviatedSubject: function() {
+    var maxLength = 30;
+    if (this.subject.length > maxLength) {
+      return this.subject.slice(0,maxLength - 3) + "...";
+    } else {
+      return this.subject;
+    }
   }
 });
 

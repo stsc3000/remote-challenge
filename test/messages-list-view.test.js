@@ -27,11 +27,11 @@ describe('MessagesListView', function() {
     messageListView.showRead = true;
     messageListView.render();
 
-    var $group = $('li[data-rel="2015-07-01"]')
-    expect($group.text()).toEqual('2015-07-01 Subject 2  Subject 1 ');
+    var $group = $('li[data-rel="01-07-2015"]')
+    expect($group.text()).toEqual('01-07-2015 Subject 2  Subject 1 ');
 
-    $group = $('li[data-rel="2015-06-30"]')
-    expect($group.text()).toEqual('2015-06-30 Subject 3 ');
+    $group = $('li[data-rel="30-06-2015"]')
+    expect($group.text()).toEqual('30-06-2015 Subject 3 ');
   });
 
   it('filters messages based on whether they are read', function(done) {
@@ -40,15 +40,15 @@ describe('MessagesListView', function() {
     messageListView.showRead = true;
     messageListView.render();
 
-    var $group = $('li[data-rel="2015-06-30"]')
+    var $group = $('li[data-rel="30-06-2015"]')
     expect($group.length).toEqual(1);
 
     messageListView.rendered = function() {
-      $group = $('li[data-rel="2015-06-30"]')
+      $group = $('li[data-rel="30-06-2015"]')
       expect($group.length).toEqual(0);
       done()
     }
-    messageListView.$el.find('[data-rel="messages-filters-show-read"]').trigger('change')
+    messageListView.$el.find('[data-filter="new"]').trigger('click')
   });
 
   it('triggers a showMessage event on click', function(done) {

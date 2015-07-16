@@ -27,8 +27,10 @@ _.extend(MessagesListView.prototype, {
 
   addEvents: function() {
     var _this = this;
-    this.$el.on('change', '[data-rel="messages-filters-show-read"]', function() {
-      var showRead = $(this).prop('checked');
+
+    this.$el.on('click', '[data-filter]', function(event) {
+      var filter = $(event.target).data('filter');
+      var showRead = { 'new': false, 'all': true }[filter];
       _this.updateMessages({showRead: showRead});
     });
     this.$el.on('click', '[data-message-id]', function() {

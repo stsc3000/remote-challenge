@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Email Client</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700|Open+Sans' rel='stylesheet' type='text/css'>
     <script src="app.js"></script>
   </head>
   <body>
@@ -16,29 +16,27 @@
     </div>
 
     <script id='messages-list-template' type='x-tmpl-handlebars'>
-      <div id='messages-filters'>
-        <label>
-          <input type="checkbox" data-rel='messages-filters-show-read' {{#if showRead}} checked {{/if}}>
-          Show Read
-        </label>
+      <div id='messages-filters' class='cf'>
+        <a href='#' data-filter='new' class='message-filter {{#unless showRead}} active {{/unless}}'>New</a>
+        <a href='#' data-filter='all' class='message-filter {{#if showRead}} active {{/if}}'>All</a>
       </div>
       <ul id='message-groups'>
         {{#each messageGroups}}
           <li class='message-group'>
-            <div class='message-group-header'>
-              <h2>{{dateString}}</h2>
+            <div class='message-group-header light'>
+              {{dateString}}
             </div>
+
             <ul class='message-group-list'>
               {{#each messages}}
-                <li class='message-group-list-item {{#if read}} read {{/if}}' data-message-id='{{_id}}'>
-                  <div class='message-group-list-item-header'>
-                    <div class='half'><b> {{ fromName }} </b></div>
-                    <div class='half text-right'> {{ time }} </div>
-                  </div>
-                  {{ subject }}
+                <li class='message-group-list-item {{#if read}} read {{/if}} cf' data-message-id='{{_id}}'>
+                  <div class='third'>{{ fromName }}</div>
+                  <div class='half light'>{{ abbreviatedSubject }}</div>
+                  <div class='sixth text-right'> {{ time }} </div>
                 </li>
               {{/each}}
             </ul>
+
           </li>
         {{/each}}
       </ul>
@@ -47,20 +45,16 @@
     <script id='messages-detail-template' type='x-tmpl-handlebars'>
       <div id='messages-detail-container'>
         {{#unless message}}
-          Please select a message.
+          <div class='light' id='messages-detail-empty'>
+            Please select a message.
+          </div>
         {{ else }}
           <div id='messages-detail-header'>
-            <ul>
-              <li>
-                <b>From:</b> {{ message.fromName }} ({{message.fromEmail}})
-              </li>
-              <li>
-                <b>Received:</b> {{ message.dateString }} ({{message.time}})
-              </li>
-            </ul>
+            <h1>{{ message.subject }}</h1>
+            <span class='light'>from </span>{{message.fromName}}
+            <span class='light'>- {{message.dateString}} ({{message.time}}) </span>
           </div>
-          <h1>Subject: {{ message.subject }}</h1>
-          <p>{{message.content}}</p>
+          <p id='messages-detail-content'>{{message.content}}</p>
         {{/unless}}
       </div>
     </script>

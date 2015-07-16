@@ -11,8 +11,8 @@ describe('MessageRepository', function() {
 
   it('groups messages by date', function() {
     var groupedMessages = messageRepository.getMessages({showRead: true});
-    var firstOfJulyGroup = _.find(groupedMessages, {dateString: '2015-07-01'});
-    var lastOfJuneGroup = _.find(groupedMessages, {dateString: '2015-06-30'});
+    var firstOfJulyGroup = _.find(groupedMessages, {dateString: '01-07-2015'});
+    var lastOfJuneGroup = _.find(groupedMessages, {dateString: '30-06-2015'});
 
     expect(
       _.find(firstOfJulyGroup.messages, {subject: 'Subject 1'})
@@ -33,7 +33,7 @@ describe('MessageRepository', function() {
 
   it('orders messages by their datetime within groups', function() {
     var groupedMessages = messageRepository.getMessages({showRead: true});
-    var firstOfJulyGroup = _.find(groupedMessages, {dateString: '2015-07-01'});
+    var firstOfJulyGroup = _.find(groupedMessages, {dateString: '01-07-2015'});
 
     expect(firstOfJulyGroup.messages[0].subject).toEqual('Subject 2');
     expect(firstOfJulyGroup.messages[1].subject).toEqual('Subject 1');
@@ -41,8 +41,8 @@ describe('MessageRepository', function() {
 
   it('filters messages based on whether they are read', function() {
     var groupedMessages = messageRepository.getMessages({showRead: false});
-    var firstOfJulyGroup = _.find(groupedMessages, {dateString: '2015-07-01'});
-    var lastOfJuneGroup = _.find(groupedMessages, {dateString: '2015-06-30'});
+    var firstOfJulyGroup = _.find(groupedMessages, {dateString: '01-07-2015'});
+    var lastOfJuneGroup = _.find(groupedMessages, {dateString: '30-06-2015'});
 
     expect(firstOfJulyGroup.messages.length).toEqual(2);
     expect(lastOfJuneGroup).toBeUndefined();
