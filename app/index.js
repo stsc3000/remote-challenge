@@ -1,11 +1,7 @@
-var MessagesListView = require('./messages-list-view');
-var MessageRepository = require('./message-repository');
-var messageData = require("json!./emails.json")
+var App = require('./app');
 var $ = require('jquery');
 
 $(function() {
-  var $messagesList = $('#messages-list');
-  var messageRepository = new MessageRepository(messageData);
-  var messagesListView = new MessagesListView($messagesList, { messageRepository: messageRepository });
-  messagesListView.render();
+  var app = new App($('body'));
+  app.start();
 });
