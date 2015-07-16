@@ -2,7 +2,10 @@ var _ = require('lodash');
 var Message = require('./message');
 
 function groupMessages(messages) {
-  return _.groupBy(messages, 'dateString');
+  var groups = _.groupBy(messages, 'dateString');
+  return _.map(groups, function(messages, dateString) {
+    return { dateString: dateString, messages: messages};
+  })
 }
 
 function filterMessages(messages, options) {

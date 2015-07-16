@@ -12,6 +12,10 @@ body {
   text-align: right;
 }
 
+#messages-filters {
+  padding: 10px 0;
+}
+
 #messages-list {
   float: left;
 }
@@ -24,6 +28,7 @@ body {
   position: fixed;
   overflow: auto;
   width: 300px;
+  margin: 0;
 }
 
 .message-group-header {
@@ -33,6 +38,10 @@ body {
 .message-group-list {
   list-style: none;
   padding: 0;
+}
+
+.message-group-list-item.read {
+  color: #B6B6B6;
 }
 
 .message-group-list-item {

@@ -9,12 +9,13 @@ describe('MessagesListView', function() {
   beforeEach(function() {
     $template = $("" +
       "<script id='messages-list-template' type='x-tmpl-handlebars'>" +
+      "<input type='checkbox' data-rel='messages-filters-show-read'></input>" +
       "<ul>" +
         "{{#each messageGroups}}" +
-          "<li data-rel={{@key}}>" +
-            "{{@key}}" +
+          "<li data-rel={{dateString}}>" +
+            "{{dateString}}" +
             "<ul>" +
-              "{{#each this}}" +
+              "{{#each messages}}" +
                 "<li> {{ subject }} </li>" +
               "{{/each}}" +
             "</ul>" +
@@ -38,6 +39,7 @@ describe('MessagesListView', function() {
   it('renders message groups', function() {
     var messageListView = new MessagesListView($sandbox, { messageRepository: messageRepository });
     var $group;
+    messageListView.showRead = true;
     messageListView.render();
 
     var $group = $('li[data-rel="2015-07-01"]')
@@ -45,6 +47,23 @@ describe('MessagesListView', function() {
 
     $group = $('li[data-rel="2015-06-30"]')
     expect($group.text()).toEqual('2015-06-30 Subject 3 ');
+  });
+
+  it('filters messages based on whether they are read', function(done) {
+    var messageListView = new MessagesListView($sandbox, { messageRepository: messageRepository });
+    var $group;
+    messageListView.showRead = true;
+    messageListView.render();
+
+    var $group = $('li[data-rel="2015-06-30"]')
+    expect($group.length).toEqual(1);
+
+    messageListView.rendered = function() {
+      $group = $('li[data-rel="2015-06-30"]')
+      expect($group.length).toEqual(0);
+      done()
+    }
+    messageListView.$el.find('[data-rel="messages-filters-show-read"]').trigger('change')
   });
 
 });

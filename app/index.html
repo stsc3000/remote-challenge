@@ -12,20 +12,26 @@
     <div id='messages-detail'></div>
 
     <script id='messages-list-template' type='x-tmpl-handlebars'>
+      <div id='messages-filters'>
+        <label>
+          <input type="checkbox" data-rel='messages-filters-show-read' {{#if showRead}} checked {{/if}}>
+          Show Read
+        </label>
+      </div>
       <ul id='message-groups'>
         {{#each messageGroups}}
           <li class='message-group'>
             <div class='message-group-header'>
-              <h2>{{@key}}</h2>
+              <h2>{{dateString}}</h2>
             </div>
             <ul class='message-group-list'>
-              {{#each this}}
-                <li class='message-group-list-item'> 
+              {{#each messages}}
+                <li class='message-group-list-item {{#if read}} read {{/if}}'>
                   <div class='message-group-list-item-header'>
                     <div class='half'><b> {{ fromName }} </b></div>
                     <div class='half text-right'> {{ time }} </div>
                   </div>
-                  {{ subject }} 
+                  {{ subject }}
                 </li>
               {{/each}}
             </ul>
