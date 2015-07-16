@@ -1,17 +1,14 @@
 var MessagesDetailView = require('../app/messages-detail-view');
 var MessageRepository = require('../app/message-repository');
 var messageFixtures = require('./message-fixtures');
+var viewFixtures = require('./view-fixtures');
 
 var $ = require('jquery');
 
 describe('MessagesDetailView', function() {
   var $template, $sandbox, messageData, messageRepository;
   beforeEach(function() {
-    $template = $("" +
-      "<script id='messages-detail-template' type='x-tmpl-handlebars'>" +
-      "{{message.subject}}" +
-    "</script>"
-    );
+    $template = $(viewFixtures.detailView);
     $('body').append($template);
     $sandbox = $('<div id="sandbox"></div>');
     $('body').append($sandbox);

@@ -1,29 +1,14 @@
 var MessagesListView = require('../app/messages-list-view');
 var MessageRepository = require('../app/message-repository');
 var messageFixtures = require('./message-fixtures');
+var viewFixtures = require('./view-fixtures');
 
 var $ = require('jquery');
 
 describe('MessagesListView', function() {
   var $template, $sandbox, messageData, messageRepository;
   beforeEach(function() {
-    $template = $("" +
-      "<script id='messages-list-template' type='x-tmpl-handlebars'>" +
-      "<input type='checkbox' data-rel='messages-filters-show-read'></input>" +
-      "<ul>" +
-        "{{#each messageGroups}}" +
-          "<li data-rel={{dateString}}>" +
-            "{{dateString}}" +
-            "<ul>" +
-              "{{#each messages}}" +
-                "<li data-message-id='{{_id}}'> {{ subject }} </li>" +
-              "{{/each}}" +
-            "</ul>" +
-          "</li>" +
-        "{{/each}}" +
-      "</ul>" +
-    "</script>"
-    );
+    $template = $(viewFixtures.listView);
     $('body').append($template);
     $sandbox = $('<div id="sandbox"></div>');
     $('body').append($sandbox);
