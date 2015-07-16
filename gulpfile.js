@@ -12,6 +12,7 @@ gulp.task("build-dev", ["webpack:build-dev", "static"], function() {
   gulp.watch(["app/**/*"], function() {
     gulp.run(['jasmine']);
     gulp.run(['static']);
+    gulp.run(['webpack:build-dev']);
   });
   gulp.watch(["test/**/*"], function() {
     gulp.run(['jasmine']);

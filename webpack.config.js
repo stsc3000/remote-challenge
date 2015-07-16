@@ -21,10 +21,8 @@ module.exports = {
     ]
   },
   resolve: {
-    alias: {
-      // Bind version of jquery
-      jquery: "jquery-2.0.3",
-    }
+    modulesDirectories: ['node_modules', 'src'],
+    fallback: path.join(__dirname, 'node_modules')
   },
   node: {
     fs: "empty"
