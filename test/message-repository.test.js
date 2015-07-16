@@ -36,4 +36,26 @@ describe('MessageRepository', function() {
     messageRepository = new MessageRepository(messageData);
   });
 
+  it('groups messages by date', function() {
+    var groupedMessages = messageRepository.getMessages({showRead: true});
+    var firstOfJulyGroup = groupedMessages['2015-07-01'];
+    var lastOfJuneGroup = groupedMessages['2015-06-30'];
+
+    expect(
+      _.find(firstOfJulyGroup, {subject: 'Subject 1'})
+    ).toBeTruthy();
+
+    expect(
+      _.find(firstOfJulyGroup, {subject: 'Subject 2'})
+    ).toBeTruthy();
+
+    expect(
+      _.find(lastOfJuneGroup, {subject: 'Subject 3'})
+    ).toBeTruthy();
+
+    expect(
+      _.find(lastOfJuneGroup, {subject: 'Subject 1'})
+    ).toBeFalsy();
+  });
+
 });
