@@ -8,8 +8,12 @@
     <script src="app.js"></script>
   </head>
   <body>
-    <div id='messages-list'></div>
-    <div id='messages-detail'></div>
+    <div id='email-app'>
+      <div class='row'>
+        <div class='col' id='messages-list'></div>
+        <div class='col' id='messages-detail'></div>
+      </div>
+    </div>
 
     <script id='messages-list-template' type='x-tmpl-handlebars'>
       <div id='messages-filters'>
@@ -38,6 +42,27 @@
           </li>
         {{/each}}
       </ul>
+    </script>
+
+    <script id='messages-detail-template' type='x-tmpl-handlebars'>
+      <div id='messages-detail-container'>
+        {{#unless message}}
+          Please select a message.
+        {{ else }}
+          <div id='messages-detail-header'>
+            <ul>
+              <li>
+                <b>From:</b> {{ message.fromName }} ({{message.fromEmail}})
+              </li>
+              <li>
+                <b>Received:</b> {{ message.dateString }} ({{message.time}})
+              </li>
+            </ul>
+          </div>
+          <h1>Subject: {{ message.subject }}</h1>
+          <p>{{message.content}}</p>
+        {{/unless}}
+      </div>
     </script>
   </body>
 </html>

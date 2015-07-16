@@ -17,18 +17,18 @@ body {
 }
 
 #messages-list {
-  float: left;
+  width: 300px;
 }
 
 #message-groups {
   display: block;
   list-style: none;
   padding: 0;
-  height: 100%;
+  margin: 0;
+  width: 300px;
   position: fixed;
   overflow: auto;
-  width: 300px;
-  margin: 0;
+  height: 100%;
 }
 
 .message-group-header {
@@ -52,4 +52,42 @@ body {
 
 .message-group-list-item:hover {
   background-color: #efefef;
+}
+
+#messages-detail {
+  padding: 20px;
+  padding-top: 34px;
+}
+
+#messages-detail dt {
+  display: inline;
+  font-weight: bold;
+}
+
+#messages-detail dd {
+  display: inline;
+}
+
+#messages-detail-header {
+  border-bottom: 1px solid #333;
+}
+
+#messages-detail-header ul {
+  list-style: none;
+  padding: 0;
+}
+
+#email-app {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+#email-app .col {
+  display: table-cell;
+  vertical-align: top;
+}
+
+#email-app .row {
+  display: table-row;
 }
