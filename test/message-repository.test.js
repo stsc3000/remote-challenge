@@ -58,4 +58,12 @@ describe('MessageRepository', function() {
     ).toBeFalsy();
   });
 
+  it('filters messages based on whether they are read', function() {
+    var groupedMessages = messageRepository.getMessages({showRead: false});
+    var firstOfJulyGroup = groupedMessages['2015-07-01'];
+    var lastOfJuneGroup = groupedMessages['2015-06-30'];
+
+    expect(firstOfJulyGroup.length).toEqual(2);
+    expect(lastOfJuneGroup).toBeUndefined();
+  });
 });
