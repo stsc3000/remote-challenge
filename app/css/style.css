@@ -1,0 +1,41 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9em;
+}
+
+.half {
+  width: 50%;
+  float: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+#messages-list {
+  float: left;
+}
+
+#message-groups {
+  display: block;
+  list-style: none;
+  padding: 0;
+  height: 100%;
+  position: fixed;
+  overflow: auto;
+  width: 300px;
+}
+
+.message-group-header {
+  border-bottom: 1px solid #333;
+}
+
+.message-group-list {
+  list-style: none;
+  padding: 0;
+}
+
+.message-group-list-item {
+  border-bottom: 1px solid #333;
+  padding: 10px 0;
+}

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Email Client</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,400italic' rel='stylesheet' type='text/css'>
     <script src="app.js"></script>
   </head>
   <body>
@@ -11,13 +12,21 @@
     <div id='messages-detail'></div>
 
     <script id='messages-list-template' type='x-tmpl-handlebars'>
-      <ul>
+      <ul id='message-groups'>
         {{#each messageGroups}}
-          <li>
-            {{@key}}
-            <ul>
+          <li class='message-group'>
+            <div class='message-group-header'>
+              <h2>{{@key}}</h2>
+            </div>
+            <ul class='message-group-list'>
               {{#each this}}
-                <li> {{ subject }} </li>
+                <li class='message-group-list-item'> 
+                  <div class='message-group-list-item-header'>
+                    <div class='half'><b> {{ fromName }} </b></div>
+                    <div class='half text-right'> {{ time }} </div>
+                  </div>
+                  {{ subject }} 
+                </li>
               {{/each}}
             </ul>
           </li>
