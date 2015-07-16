@@ -1,5 +1,5 @@
 {
-  "name": "try-webpack",
+  "name": "remote-challenge",
   "version": "0.0.0",
   "dependencies": {
     "gulp": "~3.8.11",
