@@ -3,11 +3,26 @@
   <head>
     <meta charset="utf-8">
     <title>Email Client</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="app.js"></script>
   </head>
   <body>
     <div id='messages-list'></div>
     <div id='messages-detail'></div>
+
+    <script id='messages-list-template' type='x-tmpl-handlebars'>
+      <ul>
+        {{#each messageGroups}}
+          <li>
+            {{@key}}
+            <ul>
+              {{#each this}}
+                <li> {{ subject }} </li>
+              {{/each}}
+            </ul>
+          </li>
+        {{/each}}
+      </ul>
+    </script>
   </body>
 </html>
