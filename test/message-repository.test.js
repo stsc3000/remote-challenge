@@ -1,5 +1,5 @@
 var MessageRepository = require('../app/message-repository');
-var messageFixtures = require('./fixtures');
+var messageFixtures = require('./message-fixtures');
 
 describe('MessageRepository', function() {
   var messageData, messageRepository;
