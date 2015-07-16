@@ -16,7 +16,7 @@ describe('MessagesListView', function() {
             "{{dateString}}" +
             "<ul>" +
               "{{#each messages}}" +
-                "<li> {{ subject }} </li>" +
+                "<li data-message-id='{{_id}}'> {{ subject }} </li>" +
               "{{/each}}" +
             "</ul>" +
           "</li>" +
@@ -64,6 +64,21 @@ describe('MessagesListView', function() {
       done()
     }
     messageListView.$el.find('[data-rel="messages-filters-show-read"]').trigger('change')
+  });
+
+  it('triggers a showMessage event on click', function(done) {
+    var messageListView = new MessagesListView($sandbox, { messageRepository: messageRepository });
+    var $group;
+    messageListView.showRead = true;
+    messageListView.render();
+
+    $(messageListView).on('showMessage', function(event, messageId) {
+      expect(messageId).toEqual("558070eecadb84b2cd4d5ee2");
+      done();
+    });
+
+    messageListView.$el.find('[data-message-id="558070eecadb84b2cd4d5ee2"]').trigger('click');
+
   });
 
 });

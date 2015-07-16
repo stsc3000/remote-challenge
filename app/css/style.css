@@ -40,11 +40,16 @@ body {
   padding: 0;
 }
 
+.message-group-list-item {
+  border-bottom: 1px solid #333;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
 .message-group-list-item.read {
   color: #B6B6B6;
 }
 
-.message-group-list-item {
-  border-bottom: 1px solid #333;
-  padding: 10px 0;
+.message-group-list-item:hover {
+  background-color: #efefef;
 }

@@ -16,12 +16,17 @@ _.extend(App.prototype, {
         this.$el.find('#messages-list'),
         this
       );
+      $(this.messagesListView).on('showMessage', _.bind(this.showMessage, this));
     }
     return this.messagesListView;
   },
 
   start: function() {
     this.getMessagesListView().render();
+  },
+
+  showMessage: function(event, messageId) {
+    console.log(messageId);
   }
 
 });

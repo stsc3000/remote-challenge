@@ -2,7 +2,7 @@ var $ = require('jquery');
 var _ = require('lodash');
 var Templates = require('./templates');
 
-var MessagesListView = function($el, app) {
+var MessagesListView = function($el, app, options) {
   this.$el = $el;
   this.app = app;
 };
@@ -30,6 +30,9 @@ _.extend(MessagesListView.prototype, {
     this.$el.on('change', '[data-rel="messages-filters-show-read"]', function() {
       var showRead = $(this).prop('checked');
       _this.updateMessages({showRead: showRead});
+    });
+    this.$el.on('click', '[data-message-id]', function() {
+      $(_this).trigger('showMessage', $(this).data('message-id'));
     });
   },
 
