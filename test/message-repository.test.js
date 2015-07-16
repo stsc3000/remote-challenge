@@ -58,6 +58,14 @@ describe('MessageRepository', function() {
     ).toBeFalsy();
   });
 
+  it('orders messages by their datetime within groups', function() {
+    var groupedMessages = messageRepository.getMessages({showRead: true});
+    var firstOfJulyGroup = groupedMessages['2015-07-01'];
+
+    expect(firstOfJulyGroup[0].subject).toEqual('Subject 2');
+    expect(firstOfJulyGroup[1].subject).toEqual('Subject 1');
+  });
+
   it('filters messages based on whether they are read', function() {
     var groupedMessages = messageRepository.getMessages({showRead: false});
     var firstOfJulyGroup = groupedMessages['2015-07-01'];

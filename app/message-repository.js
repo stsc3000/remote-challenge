@@ -13,6 +13,10 @@ function filterMessages(messages, options) {
   }
 }
 
+function orderMessagesByDate(messages) {
+  return _.sortBy(messages, 'date').reverse()
+}
+
 var MessageRepository = function(messagesData) {
   this.messages = _.map(messagesData, function(messageData) {
     return new Message(messageData)
@@ -22,7 +26,9 @@ var MessageRepository = function(messagesData) {
 _.extend(MessageRepository.prototype, {
   getMessages: function(options) {
     return groupMessages(
-      filterMessages(this.messages, options)
+      filterMessages(
+        orderMessagesByDate(this.messages)
+      , options)
     );
   }
 });
